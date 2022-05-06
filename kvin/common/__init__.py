@@ -5,5 +5,5 @@ def wraps(wrapped, assigned = WRAPPER_ASSIGNMENTS + ("__args__",), updated = WRA
         setattr(wrapped, "__args__", wrapped.__code__.co_varnames[:wrapped.__code__.co_argcount])
     return partial(update_wrapper, wrapped=wrapped, assigned=assigned, updated=updated)
   
-from common import define
-def define(name, default=None, readonly=False, validation=None, on_value_changed=None): return define.define(name, default, readonly, validation, on_value_changed)
+from common import __define__
+def define(name, default=None, readonly=False, validation=None, on_value_changed=None): return __define__.define(name, default, readonly, validation, on_value_changed)
