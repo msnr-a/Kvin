@@ -16,7 +16,7 @@ def validate(Type: type, arg: str, **kwargs):
                 argnames = func.__code__.co_varnames[:func.__code__.co_argcount]
 
             # 引数
-            value = args[argnames.index(arg)]
+            value = args[argnames.index(arg) - 1]
             
             try:
                 
@@ -30,21 +30,21 @@ def validate(Type: type, arg: str, **kwargs):
                 raise type(ex)(f"{func.__qualname__} : '{arg}' {ex}") from ex
                 
             # function実行
-            func(self, *args, **kwdargs)
+            return func(self, *args, **kwdargs)
             
         return _wrapper
     return _decorator
 
 @validate.register
 def _(value: int, Max=maxsize, Min=-maxsize):
-    
+
     # 最小値
     if value < Min:
-        raise ValueError(f"must be greater than {Min - 1}.")
+        raise ValueError(f"must be greater than {Min}.")
         
     # 最大値
     if Max < value:
-        raise ValueError(f"must be less than {Max + 1}.")
+        raise ValueError(f"must be less than {Max}.")
         
     # OK
     return value
