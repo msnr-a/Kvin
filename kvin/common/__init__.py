@@ -13,3 +13,7 @@ def validate(Type: type, arg: str, **kwargs): return __validator__.validate(Type
 
 from kvin.common import __base__
 def base(*args): return __base__.base(*args)
+
+from common import __setproperty__
+from common.__setproperty__ import NOT_EXISTS_BEHAVIORS
+def setproperty(isnotexists: NOT_EXISTS_BEHAVIORS=NOT_EXISTS_BEHAVIORS.IGNORE): return __setproperty__.setproperty(isnotexists)
