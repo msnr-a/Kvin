@@ -1,4 +1,4 @@
-from kvin.common import wraps
+from . import wraps
 
 def base(*names):
     def _decorator(func):
