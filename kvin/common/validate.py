@@ -1,5 +1,5 @@
+from . import wraps
 from functools import singledispatch
-from kvin.common import wraps
 from re import fullmatch
 from sys import maxsize
 
