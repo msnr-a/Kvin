@@ -1,4 +1,4 @@
-from kvin.common import wraps
+from . import wraps
 
 def define(name, default=None, readonly=False, validation=None, on_value_changed=None):
     def _decorator(constructor):
