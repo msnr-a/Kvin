@@ -39,7 +39,7 @@ def foreach(*names, **yield_return):
                 return yield_return_func(idxs, vals, args, kwargs)
             else:
                 def array_return_func(idxs, vals, args, kwargs):
-                    result = [[func(self, *a, **kwargs)] for a in args2]
+                    result = [func(self, *a, **kwargs) for a in args2]
                     return result
                 return array_return_func(idxs, vals, args, kwargs)
 
