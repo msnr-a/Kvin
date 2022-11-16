@@ -24,7 +24,10 @@ def foreach(*names, **yield_return):
                     if __isarray(v):
                         idxs += [i]
                         vals += [v]
-
+            
+            if len(idxs) == 0:
+                return func(self, *args, **kwargs)
+            
             args2 = []
             for val in zip(*vals):
                 arg = list(args)
@@ -39,7 +42,9 @@ def foreach(*names, **yield_return):
                 return yield_return_func(idxs, vals, args, kwargs)
             else:
                 def array_return_func(idxs, vals, args, kwargs):
-                    result = [func(self, *a, **kwargs) for a in args2]
+                    result = []
+                    for a in args2:
+                        result += [func(self, *a, **kwargs)]
                     return result
                 return array_return_func(idxs, vals, args, kwargs)
 
